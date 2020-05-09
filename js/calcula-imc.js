@@ -1,15 +1,8 @@
-//document - Pega o dom
-//querySelector - pega parte do Dom
 var titulo = document.querySelector(".titulo");
-//textContent - Tira a tag
-console.log(titulo.textContent);
+
+// console.log(titulo.textContent);
 titulo.textContent = "Aparecida Nutricionista";
 
-// CALCULAR IMC
-//Pegar tr, para um elemento
-// var trPaciente = document.querySelector("#primeiro-paciente");
-
-//Pegar tr, para todos elementos
 var pacientes = document.querySelectorAll(".paciente");
 
 for (var i = 0; i < pacientes.length; i++) {
@@ -47,7 +40,7 @@ for (var i = 0; i < pacientes.length; i++) {
     }
 }
 
-function validaPeso(){
+function validaPeso(peso){
     if(peso >= 0 && peso < 1000){
         return true;
     }else{
@@ -63,12 +56,19 @@ function validaAltura(altura){
     }
 }
 
-function validaPaciente(paciente) {
-    if(validaPeso(paciente.peso)){
-        return true;
-    }else{
-        return false;
+function validaPaciente(paciente){
+
+    var erros = [];
+
+    if (!validaPeso(paciente.peso)) {
+        erros.push("Peso é inválido");
     }
+
+    if (!validaAltura(paciente.altura)) {
+        erros.push("Altura é inválida");
+    }
+
+    return erros;
 }
 
 function calcularImc(peso,altura){
