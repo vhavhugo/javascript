@@ -1,7 +1,9 @@
 var pacientes = document.querySelectorAll(".paciente");
 
-pacientes.forEach(function(paciente){
-    paciente.addEventListener("dblclick", function(){
-        console.log("Fui clicado com um duplo cliquel;");
-    });
+var tabela = document.querySelector("table");
+
+tabela.addEventListener("dblclick", function(event){
+    // var alvoEvento = event.target;
+    // var paiDoAlvo = alvoEvento.parentNode; // tr
+    event.target.parentNode.remove();
 });
